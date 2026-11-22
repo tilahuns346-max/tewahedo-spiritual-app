@@ -120,7 +120,12 @@ AUTH_PASSWORD_VALIDATORS = [
 
 AUTH_USER_MODEL = 'accounts.User'
 
-LANGUAGE_CODE = 'am-et'
+LANGUAGE_CODE = 'am'
+
+LANGUAGES = [
+    ('am', 'Amharic (አማርኛ)'),
+    ('en', 'English'),
+]
 TIME_ZONE = 'Africa/Addis_Ababa'
 USE_I18N = True
 USE_TZ = True
