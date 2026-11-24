@@ -6,6 +6,7 @@ import { ThemeProvider, useTheme } from '../context/ThemeContext';
 import { AuthProvider } from '../context/AuthContext';
 import { AudioProvider } from '../context/AudioContext';
 import { MiniPlayer } from '../components/MiniPlayer';
+import { AppFooter } from '../components/AppFooter';
 import { View, StyleSheet } from 'react-native';
 
 function RootLayoutNav() {
@@ -50,6 +51,9 @@ function RootLayoutNav() {
 
       {/* Global Persistent Mini-player */}
       <MiniPlayer />
+
+      {/* Global Footer on every page */}
+      <AppFooter />
     </View>
   );
 }
