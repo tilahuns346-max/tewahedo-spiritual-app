@@ -30,11 +30,14 @@ class ApiService {
 
     if (!response.ok) {
       let errorMessage = `HTTP error! status: ${response.status}`;
+      let errorData: any = null;
       try {
-        const errorData = await response.json();
+        errorData = await response.json();
         errorMessage = errorData.detail || errorData.message || JSON.stringify(errorData);
       } catch {}
-      throw new Error(errorMessage);
+      const error: any = new Error(errorMessage);
+      error.response = { status: response.status, data: errorData };
+      throw error;
     }
 
     if (response.status === 204) {

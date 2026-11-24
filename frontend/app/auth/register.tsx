@@ -48,6 +48,7 @@ export default function RegisterScreen() {
         full_name: fullName.trim(),
         baptismal_name: baptismalName.trim(),
         password,
+        confirm_password: confirmPassword,
         preferred_language: preferredLanguage,
       });
       router.replace('/(tabs)/profile');
