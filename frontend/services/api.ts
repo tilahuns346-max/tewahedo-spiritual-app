@@ -14,7 +14,7 @@ class ApiService {
     }
   }
 
-  private async request<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
+  public async request<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
     const token = await this.getAuthToken();
     const headers: Record<string, string> = {
       'Content-Type': 'application/json',
@@ -255,3 +255,41 @@ class ApiService {
 
 export const api = new ApiService();
 export default api;
+
+// Compatibility adapters
+export const dailyAPI = {
+  getToday: () => api.getTodayOverview().then((data: any) => ({ data })),
+  getFastingSeasons: () => api.request<any>('/daily/fasting/').then((data: any) => ({ data })).catch(() => ({ data: [] })),
+};
+
+export const saintsAPI = {
+  getSaints: (params?: any) => api.getSaints(params).then((data: any) => ({ data })),
+  getSaintDetail: (id: number) => api.getSaintDetail(id).then((data: any) => ({ data })),
+};
+
+export const teachingsAPI = {
+  getCategories: () => api.getTeachingCategories().then((data: any) => ({ data })),
+  getLessons: (params?: any) => api.getLessons(params).then((data: any) => ({ data })),
+  getLessonDetail: (id: number) => api.getLessonDetail(id).then((data: any) => ({ data })),
+};
+
+export const videosAPI = {
+  getCategories: () => api.request<any>('/videos/categories/').then((data: any) => ({ data })).catch(() => ({ data: [] })),
+  getVideos: (params?: any) => api.getVideos(params).then((data: any) => ({ data })),
+  getVideoDetail: (id: number) => api.getVideoDetail(id).then((data: any) => ({ data })),
+};
+
+export const sermonsAPI = {
+  getPreachers: () => api.getPreachers().then((data: any) => ({ data })),
+  getCategories: () => api.request<any>('/sermons/categories/').then((data: any) => ({ data })).catch(() => ({ data: [] })),
+  getSermons: (params?: any) => api.getSermons(params).then((data: any) => ({ data })),
+  getSermonDetail: (id: number) => api.getSermonDetail(id).then((data: any) => ({ data })),
+};
+
+export const activityAPI = {
+  getPlaylists: () => api.getPlaylists().then((data: any) => ({ data })),
+  createPlaylist: (payload: { title: string; description?: string }) =>
+    api.createPlaylist(payload.title, payload.description).then((data: any) => ({ data })),
+  addTrack: (playlistId: number, trackId: number) =>
+    api.addTrackToPlaylist(playlistId, trackId).then((data: any) => ({ data })),
+};

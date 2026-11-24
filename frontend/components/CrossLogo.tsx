@@ -3,6 +3,7 @@ import { View, Image, StyleSheet } from 'react-native';
 
 interface CrossLogoProps {
   size?: number;
+  color?: string;
 }
 
 export const CrossLogo: React.FC<CrossLogoProps> = ({ size = 48 }) => {

@@ -45,7 +45,7 @@ export default function LessonDetailScreen() {
       title_english: lesson.title_english,
       artist_name: lesson.author_or_teacher || 'ተዋሕዶ ትምህርት',
       audio_url: lesson.audio_url,
-      cover_image_url: lesson.cover_image,
+      cover_image: lesson.cover_image,
       duration_seconds: lesson.duration_minutes ? lesson.duration_minutes * 60 : 600,
     });
   };

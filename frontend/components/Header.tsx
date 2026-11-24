@@ -8,20 +8,27 @@ import { CrossLogo } from './CrossLogo';
 interface HeaderProps {
   title?: string;
   subtitle?: string;
+  titleAmharic?: string;
+  titleEnglish?: string;
   showBack?: boolean;
   onBack?: () => void;
   rightAction?: React.ReactNode;
 }
 
 export const Header: React.FC<HeaderProps> = ({
-  title = 'መሐበረ ቅዱሳን',
+  title,
   subtitle = 'ተዋሕዶ ሚዲያ',
+  titleAmharic,
+  titleEnglish,
   showBack = false,
   onBack,
   rightAction,
 }) => {
   const insets = useSafeAreaInsets();
   const { colors, isDark, toggleTheme } = useTheme();
+
+  const displayTitle = titleAmharic || title || 'መሐበረ ቅዱሳን';
+  const displaySubtitle = titleEnglish || subtitle;
 
   return (
     <View style={[styles.wrapper, { paddingTop: Math.max(insets.top, 16), backgroundColor: colors.surface, borderBottomColor: colors.border }]}>
@@ -38,11 +45,11 @@ export const Header: React.FC<HeaderProps> = ({
 
         <View style={styles.titleContainer}>
           <Text style={[styles.title, { color: colors.text }]} numberOfLines={1}>
-            {title}
+            {displayTitle}
           </Text>
-          {subtitle ? (
+          {displaySubtitle ? (
             <Text style={[styles.subtitle, { color: colors.primary }]} numberOfLines={1}>
-              {subtitle}
+              {displaySubtitle}
             </Text>
           ) : null}
         </View>
