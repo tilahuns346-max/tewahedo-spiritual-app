@@ -33,6 +33,7 @@ class PlaylistViewSet(viewsets.ModelViewSet):
         item, created = PlaylistItem.objects.get_or_create(
             playlist=playlist, track=track, defaults={'order': next_order}
         )
+        playlist.refresh_from_db()
         return Response(PlaylistSerializer(playlist, context={'request': request}).data)
 
     @action(detail=True, methods=['post'])
