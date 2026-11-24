@@ -4,6 +4,10 @@ from django.conf import settings
 from django.conf.urls.static import static
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 
+admin.site.site_header = 'መሐበረ ቅዱሳን / ተዋሕዶ ሚዲያ አስተዳደር (Mahibere Kidusan Admin)'
+admin.site.site_title = 'ተዋሕዶ ሚዲያ (Tewahedo Media)'
+admin.site.index_title = 'የኢትዮጵያ ኦርቶዶክስ ተዋሕዶ ቤተክርስቲያን መንፈሳዊ መድረክ አስተዳደር'
+
 urlpatterns = [
     path('admin/', admin.site.urls),
 
