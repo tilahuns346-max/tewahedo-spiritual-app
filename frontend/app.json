@@ -1,0 +1,53 @@
+{
+  "expo": {
+    "name": "Mahibere Kidusan - መሐበረ ቅዱሳን",
+    "slug": "mahibere-kidusan",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/app_logo_cross.png",
+    "scheme": "tewahedo",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/images/app_logo_cross.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#7B1113"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.tewahedo.mahiberekidusan",
+      "infoPlist": {
+        "UIBackgroundModes": ["audio"]
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/app_logo_cross.png",
+        "backgroundColor": "#7B1113"
+      },
+      "package": "com.tewahedo.mahiberekidusan",
+      "permissions": [
+        "android.permission.RECORD_AUDIO",
+        "android.permission.MODIFY_AUDIO_SETTINGS",
+        "android.permission.WAKE_LOCK"
+      ]
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "single",
+      "favicon": "./assets/images/app_logo_cross.png"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-av",
+        {
+          "microphonePermission": false
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
